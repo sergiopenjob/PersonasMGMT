@@ -6,12 +6,17 @@ public abstract class Persona {
     private int     edad;
 
     public Persona(String dni, String nombre) {
-        this.dni = dni;
+        this.dni    = dni;
         this.nombre = nombre;
+        this.edad   = 0;
     }
     public Persona(String dni, String nombre, int edad) {
         this(dni, nombre);
-        this.edad = edad;
+        
+        if(edad < 120)
+            this.edad = edad;
+        else
+            this.edad = 0;
     }
 
     public String getDni() {
@@ -33,5 +38,17 @@ public abstract class Persona {
     }
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+    
+    @Override
+    public String toString(){
+        String info = "\n"
+                    + "[INFO PERSONA]\n"
+                    + "Nombre: " + getNombre() + "\n"
+                    + "DNI: " + getDni() + "\n";        
+        if(getEdad() == 0)
+            return info;
+        else
+            return info + "Edad: " + getEdad() + "\n";
     }
 }
