@@ -15,8 +15,6 @@ public abstract class Persona {
         
         if(edad < 120)
             this.edad = edad;
-        else
-            this.edad = 0;
     }
 
     public String getDni() {
