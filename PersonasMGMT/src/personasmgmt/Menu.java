@@ -8,13 +8,13 @@ public class Menu {
     private final int SALIR_MENU    = 0;
 
     public void menuMain() {
-        int menu = 0;
+        int opcion = -1;
 
         do {
             mostrarMenu();
-            menu = scn.nextInt();
-            ejecutarMenu(menu);
-        } while (menu != SALIR_MENU);
+            opcion = scn.nextInt();
+            ejecutarMenu(opcion);
+        } while (opcion != SALIR_MENU);
 
         System.out.println("Hasta luego!");
     }
@@ -32,13 +32,10 @@ public class Menu {
                 + "3.-\tBorrar Persona\n"
                 + "4.-\tMostrar Persona\n"
                 + "5.-\tListar Persona\n"
-                + "-----------------------------------"
+                + "-----------------------------------\n"
                 + "0.-\tSalir de la Aplicacion\n"
                 + "\"===================================\n"
                 + "Indice una Opcion: ");
-        
-        int opcion = scn.nextInt();
-        ejecutarMenu(opcion);
     }
 
     public void ejecutarMenu(int menu) {
