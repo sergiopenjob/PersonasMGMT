@@ -21,12 +21,27 @@ public class Menu {
 
     public void mostrarMenu() {
         limpiarPantalla();
+        
         // Menu del programa
+        System.out.println(
+                "===================================\n"
+                + "\tGestión de Personas\n"
+                + "===================================\n"
+                + "1.-\tAñadir Persona\n"
+                + "2.-\tModificar Persona\n"
+                + "3.-\tBorrar Persona\n"
+                + "4.-\tMostrar Persona\n"
+                + "5.-\tListar Persona\n"
+                + "-----------------------------------"
+                + "0.-\tSalir de la Aplicacion\n"
+                + "\"===================================\n"
+                + "Indice una Opcion: ");
+        
+        int opcion = scn.nextInt();
+        ejecutarMenu(opcion);
     }
 
     public void ejecutarMenu(int menu) {
-        int ini, fin;
-
         limpiarPantalla();
 
         switch (menu) {
