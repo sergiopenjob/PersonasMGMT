@@ -6,5 +6,4 @@ public class PersonasMGMT {
         Menu m = new Menu();
         m.menuMain();
     }
-    
 }
