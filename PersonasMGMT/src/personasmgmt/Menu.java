@@ -12,8 +12,9 @@ public class Menu {
 
         do {
             mostrarMenu();
-            opcion = scn.nextInt();
-            ejecutarMenu(opcion);
+            opcion = Integer.parseInt(scn.nextLine());
+            
+            ejecutarMenuPrincipal(opcion);
         } while (opcion != SALIR_MENU);
 
         System.out.println("Hasta luego!");
@@ -54,11 +55,22 @@ public class Menu {
                 + "Indique una Opción: ");
     }
 
-    public void ejecutarMenu(int menu) {
+    public void ejecutarMenuPrincipal(int menu) {
         limpiarPantalla();
 
         switch (menu) {
             // Ejecucion del programa
+            case 1:
+                int accion;
+                
+                do {
+                    mostrarMenuAnadirPersona();
+                    accion = Integer.parseInt(scn.nextLine());
+                    ejecutarFormularioAnadirPersona(accion);
+                } while (accion != SALIR_MENU);
+                
+                
+                break;
         }
     }
 
@@ -73,9 +85,68 @@ public class Menu {
 
         do {
             System.out.println("\n\nPulse 0 para volver al menú principal...");
-            continuar = scn.nextInt();
+            continuar = Integer.parseInt(scn.nextLine());
         } while (continuar != SALIR_MENU);
 
         limpiarPantalla();
+    }
+
+    private void ejecutarFormularioAnadirPersona(int accion) {
+        limpiarPantalla();
+        
+        switch(accion){
+            // AÑADIR LAS EXCEPCIONES PARA LOS TRY CATCHes CORRESPONDIENTES
+            case 1: // Estudiante
+                System.out.println(
+                "===================================\n"
+                + "\tFORMULARIO ESTUDIANTE\n"
+                + "===================================\n");
+
+                System.out.println("Indique su Nombre: ");
+                String nombre = scn.nextLine();
+                
+                System.out.println("\nIndique su DNI: ");
+                String dni = scn.nextLine();
+                
+                System.out.println("\nIndique sus Estudios: ");
+                String estudios = scn.nextLine();
+                
+                System.out.println("\n¿Quiere indicar su edad?\nSi(1) / No(0)");
+                int acepto = Integer.parseInt(scn.nextLine());;
+                
+                boolean salir = false;
+                
+                do{
+                    Persona p;
+                    
+                    switch(acepto){
+                        case 1:
+                            System.out.println("\nIndique su edad: ");
+                            int edad = Integer.parseInt(scn.nextLine());;
+                            
+                            // Aqui se guardará el estudiante CON EDAD
+                             p.setNuevoEstudiante(new Estudiante(dni, nombre, estudios, edad));
+                             
+                             salir = true;
+                            break;
+                            
+                        case 0:
+                            // Aqui se guardará el estudiante SIN EDAD
+                            p.setNuevoEstudiante(new Estudiante(dni, nombre, estudios));
+                            
+                            salir = true;
+                            break;
+                    }
+                }while(!salir);
+                
+                System.out.println("\n (+) UN NUEVO ESTUDIANTE HA SIDO AGREGADO! (+)");
+                continuar();
+                break;
+            
+            case 2: // Trabajador
+                System.out.println("\nEN CONSTRUCCION\n");
+                continuar();
+                break;
+        }
     }
 }

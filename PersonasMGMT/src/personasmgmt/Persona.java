@@ -38,8 +38,12 @@ public abstract class Persona {
             throw new Exception("La edad debe ser menor de 120");
     }
     
-    public void setNuevaPersona(Persona p){
-        // Aqui se añadirá la persona al arraylist
+    public void setNuevoEstudiante(Estudiante e){
+        // Aqui se añadirá el estudiante al arraylist
+    }
+    
+    public void setNuevoTrabajador(Trabajador t){
+        // Aqui se añadirá el trabajador al arraylist
     }
     
     @Override
