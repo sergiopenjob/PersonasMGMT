@@ -33,9 +33,25 @@ public class Menu {
                 + "4.-\tMostrar Persona\n"
                 + "5.-\tListar Persona\n"
                 + "-----------------------------------\n"
-                + "0.-\tSalir de la Aplicacion\n"
+                + "0.-\tSalir de la Aplicación\n"
                 + "\"===================================\n"
-                + "Indice una Opcion: ");
+                + "Indique una Opción: ");
+    }
+    
+    public void mostrarMenuAnadirPersona() {
+        limpiarPantalla();
+        
+        // Menu del programa
+        System.out.println(
+                "===================================\n"
+                + "\tAñadir Persona\n"
+                + "===================================\n"
+                + "1.-\tEstudiante\n"
+                + "2.-\tTrabajador\n"
+                + "-----------------------------------\n"
+                + "0.-\tVolver al Menú Principal\n"
+                + "\"===================================\n"
+                + "Indique una Opción: ");
     }
 
     public void ejecutarMenu(int menu) {
