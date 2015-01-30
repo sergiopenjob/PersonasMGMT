@@ -3,18 +3,15 @@ package personasmgmt;
 public abstract class Persona {
     private String  dni;
     private String  nombre;
-    private int     edad;
+    private int     edad = -1;
 
     public Persona(String dni, String nombre) {
-        this.dni    = dni;
-        this.nombre = nombre;
-        this.edad   = 0;
+        this.setDni(dni);
+        this.setNombre(nombre);
     }
-    public Persona(String dni, String nombre, int edad) {
+    public Persona(String dni, String nombre, int edad) throws Exception {
         this(dni, nombre);
-        
-        if(edad < 120)
-            this.edad = edad;
+        this.setEdad(edad);
     }
 
     public String getDni() {
@@ -34,8 +31,15 @@ public abstract class Persona {
     public int getEdad() {
         return edad;
     }
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setEdad(int edad) throws Exception{
+        if(edad < 120)
+            this.edad = edad;
+        else
+            throw new Exception("La edad debe ser menor de 120");
+    }
+    
+    public void setNuevaPersona(Persona p){
+        // Aqui se añadirá la persona al arraylist
     }
     
     @Override
@@ -43,8 +47,9 @@ public abstract class Persona {
         String info = "\n"
                     + "[INFO PERSONA]\n"
                     + "Nombre: " + getNombre() + "\n"
-                    + "DNI: " + getDni() + "\n";        
-        if(getEdad() == 0)
+                    + "DNI: " + getDni() + "\n";   
+        
+        if(getEdad() == -1)
             return info;
         else
             return info + "Edad: " + getEdad() + "\n";

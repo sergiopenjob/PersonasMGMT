@@ -2,32 +2,39 @@ package personasmgmt;
 
 public class Trabajador extends Persona{
     private int salario;
-
-    public Trabajador(String dni, String nombre) {
+    
+    public Trabajador(String dni, String nombre, int edad) {
         super(dni, nombre);
-        this.salario = 0;
-    }
-
-    public Trabajador(String dni, String nombre, int salario) {
-        super(dni, nombre);
-
-        if(salario > 0)
-            this.salario = salario;
+        this.setEdad(edad);
     }
     
-    public Trabajador(int edad, String dni, String nombre) {
-        this(dni, nombre);
+    public Trabajador(String dni, String nombre, int edad, int salario) {
+        this(dni, nombre, edad);
         
-        if(edad >= 18){
-            super.setEdad(edad);
+        try {
+            this.setSalario(salario);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
-    public Trabajador(String dni, String nombre, int salario, int edad) {
-        this(dni, nombre, salario);
-        
+    public void setSalario(int salario) throws Exception {
+        if(salario > 0){
+            this.salario = salario;
+        }else{
+            throw new Exception("El salario indicado no es correcto");
+        }
+    }
+    
+    @Override
+    public void setEdad(int edad){
         if(edad >= 18){
-            super.setEdad(edad);
+            
+            try {
+                super.setEdad(edad);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
         }
     }
 }

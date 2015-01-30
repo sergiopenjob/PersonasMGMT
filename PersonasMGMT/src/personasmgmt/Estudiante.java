@@ -5,13 +5,10 @@ public class Estudiante extends Persona{
     
     public Estudiante(String dni, String nombre, String estudios) {
         super(dni, nombre);
-        this.estudios = estudios;
+        this.setEstudios(estudios);
     }
 
-    public Estudiante(String dni, String nombre, int edad, String estudios) {
-        super(dni, nombre, edad);
+    public void setEstudios(String estudios) {
         this.estudios = estudios;
     }
-    
-    
 }
